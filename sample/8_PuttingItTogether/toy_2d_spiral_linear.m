@@ -84,26 +84,26 @@ end
 %% 訓練終わり
 % サンプルデータを入れてみる
 for lp1=1:10
-DX = zeros(N*K, D);  % データ格納用行列
-sample_x = 2*rand([1 num_examples])-1;
-sample_y = 2*rand([1 num_examples])-1;
+    DX = zeros(N*K, D);  % データ格納用行列
+    sample_x = 2*rand([1 num_examples])-1;
+    sample_y = 2*rand([1 num_examples])-1;
 
-DX(:,1)= sample_x;
-DX(:,2)= sample_y;
+    DX(:,1)= sample_x;
+    DX(:,2)= sample_y;
 
 
-s_scores = DX * W + b; %　分類スコアの評価
-exp_scores = exp(s_scores);
-probs = exp_scores ./ sum(exp_scores, 2); %[N x K]
+    s_scores = DX * W + b; %　分類スコアの評価
+    exp_scores = exp(s_scores);
+    probs = exp_scores ./ sum(exp_scores, 2); %[N x K]
 
-[~,argmax_probs] = max(probs,[],2);
+    [~,argmax_probs] = max(probs,[],2);
 
-% one-hot表記へ変換
+    % one-hot表記へ変換
 
-y_color = argmax_probs==1:3;
-hold on
-figure(1);scatter(DX(:,1),DX(:,2),[],y_color);
-hold off
+    y_color = argmax_probs==1:3;
+    hold on
+    figure(1);scatter(DX(:,1),DX(:,2),[],y_color);
+    hold off
 end
 
 
