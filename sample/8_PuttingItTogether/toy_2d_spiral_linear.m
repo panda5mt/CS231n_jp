@@ -109,7 +109,6 @@ for lp1=1:10
     [~,argmax_probs] = max(probs,[],2);
 
     % one-hot表記へ変換
-
     y_color = argmax_probs==1:3;
     hold on
     figure(1);scatter(DX(:,1),DX(:,2),[],y_color);
