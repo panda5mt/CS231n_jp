@@ -1,7 +1,7 @@
 ### Project Specific stuff
 test_run_dir/*
 *.pages
-
+*.asv
 ### XilinxISE template
 # intermediate build files
 *.zip
