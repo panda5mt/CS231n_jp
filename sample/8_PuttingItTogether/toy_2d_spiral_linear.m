@@ -82,6 +82,16 @@ for i = 1:200
     b = b - step_size * db;
 end
 %% 訓練終わり
+scores = X * W + b;
+[~,predicted_class] = max(scores,[],2);
+
+% 正解している数
+pc_num = sum(predicted_class == y,'all');
+% 平均値(%表示)
+pc_mean = pc_num / num_examples * 100;
+Str2 = ['training accuracy: ',num2str(pc_mean),'%.'];
+disp(Str2);
+
 % サンプルデータを入れてみる
 for lp1=1:10
     DX = zeros(N*K, D);  % データ格納用行列
