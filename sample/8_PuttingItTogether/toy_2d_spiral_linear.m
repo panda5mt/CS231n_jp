@@ -28,7 +28,6 @@ for j=0:(K-1)
     X(ix,1) = r.*sin(t);
     X(ix,2) = r.*cos(t);
     y(ix,1) = j + 1;
-     
 end
 
 % 分類ごとに色を変えたいのでone-hot表記にする
@@ -92,7 +91,7 @@ Str2 = ['training accuracy: ',num2str(pc_mean),'%.'];
 disp(Str2);
 
 % サンプルデータを入れてみる
-for lp1=1:10
+for lp1=1:30
     DX = zeros(N*K, D);  % データ格納用行列
     sample_x = 2*rand([1 num_examples])-1;
     sample_y = 2*rand([1 num_examples])-1;
