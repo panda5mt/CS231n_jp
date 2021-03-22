@@ -52,7 +52,6 @@ for i = 1:200
     end
     
     data_loss = sum(correct_logprobs,'all') / num_examples;
-    
     reg_loss = 0.5 * reg * sum (W .^ 2,'all');
     loss = data_loss + reg_loss;
     

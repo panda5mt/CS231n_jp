@@ -1,7 +1,6 @@
 %% ニューラルネットワークテスト
 close all; 
 clc;
-
 %% パラメータ初期化
 N = 100;    % 各分類ごとのポイント数
 D = 2;      % 次元
@@ -98,8 +97,6 @@ for i = 1:10000
     b = b - step_size * db;
     W2 = W2 - step_size * dW2;
     b2 = b2 - step_size * db2;
-    
-    
 end
 %% 訓練終わり
 M = X * W + b;
@@ -125,12 +122,10 @@ for lp1=1:30
     DX(:,1)= sample_x;
     DX(:,2)= sample_y;
 
-
     M = DX * W + b;
     hidden_layer = M .* (0 < M); % ReLU:活性化関数
     scores = hidden_layer * W2 + b2;
     [~,argmax_scores] = max(scores,[],2);
-
    
     % one-hot表記へ変換
     y_color = argmax_scores==1:3;
