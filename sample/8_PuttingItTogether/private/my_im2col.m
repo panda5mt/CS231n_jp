@@ -21,6 +21,7 @@ function [col,out_h,out_w] = my_im2col(input_data, filter_h, filter_w, stride, p
     out_h = int16(fix((H + 2*pad - filter_h)/stride) + 1);
     out_w = int16(fix((W + 2*pad - filter_w)/stride) + 1);
     
+    % パディング
     img = padarray(input_data,[pad pad],0,'both');
     col = zeros(N, C, filter_h, filter_w, out_h, out_w);
     

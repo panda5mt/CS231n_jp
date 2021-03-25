@@ -63,7 +63,7 @@ for i = 1:10000
     end
     
     data_loss = sum(correct_logprobs,'all') / num_examples;
-    
+    %% 損失計算
     reg_loss = 0.5 * reg * sum (W .^ 2,'all') + 0.5 * reg * sum (W2 .^ 2,'all');
     loss = data_loss + reg_loss;
     
@@ -73,6 +73,7 @@ for i = 1:10000
         disp(Str1); 
     end
     
+    %% compute the gradient on scores
     dscores = probs;
     
     for zz=1:num_examples
@@ -81,12 +82,16 @@ for i = 1:10000
     
     dscores = dscores ./ num_examples;
     
+    %% backpropate the gradient to the parameters
+    % first backprop into parameters W2 and b2
     dW2 = hidden_layer' * dscores;
     db2 = sum(dscores, 1);
-    
+     
+    %% next backprop into hidden layer
     dhidden = dscores * W2';
+    %% backprop the ReLU non-linearity
     dhidden = dhidden .* (hidden_layer > 0);
-    
+    %% finally into W,b
     dW = X' * dhidden;
     db = sum(dhidden, 1);
     
