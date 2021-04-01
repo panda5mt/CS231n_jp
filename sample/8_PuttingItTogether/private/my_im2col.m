@@ -12,14 +12,11 @@ function [col,out_h,out_w] = my_im2col(input_data, filter_h, filter_w, stride, p
     %}
 
     %% input_dataから、バッチサイズN, チャンネル数C, 画像高さH, 画像幅W を取得
-    N = size(input_data,1);
-    C = size(input_data,2);
-    W = size(input_data,3);
-    H = size(input_data,4);
-    
+    [N, C, W, H] = size(input_data);
+
     %% 畳み込み処理後の出力の高さ out_h, 幅 out_w を計算
-    out_h = int16(fix((H + 2*pad - filter_h)/stride) + 1);
-    out_w = int16(fix((W + 2*pad - filter_w)/stride) + 1);
+    out_h = fix((H + 2*pad - filter_h)/stride) + 1;
+    out_w = fix((W + 2*pad - filter_w)/stride) + 1;
     
     % パディング
     img = padarray(input_data,[pad pad],0,'both');
